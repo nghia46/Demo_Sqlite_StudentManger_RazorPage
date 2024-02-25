@@ -1,0 +1,55 @@
+﻿@page
+@model LoginUnitOfWork.Pages.StudentManagerModel
+@{
+    ViewData["Title"] = "Student Manager";
+}
+
+<h2>Student Manager</h2>
+
+<!-- Add New Student Form -->
+<form method="post">
+    <div class="form-group">
+        <label asp-for="NewStudent.Id"></label>
+        <input asp-for="NewStudent.Id" class="form-control" />
+        <span asp-validation-for="NewStudent.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewStudent.Name"></label>
+        <input asp-for="NewStudent.Name" class="form-control" />
+        <span asp-validation-for="NewStudent.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewStudent.Age"></label>
+        <input asp-for="NewStudent.Age" class="form-control" />
+        <span asp-validation-for="NewStudent.Age" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NewStudent.Gpa"></label>
+        <input asp-for="NewStudent.Gpa" class="form-control" />
+        <span asp-validation-for="NewStudent.Gpa" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+</form>
+
+<!-- Student List -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>GPA</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Gpa</td>
+            </tr>
+        }
+    </tbody>
+</table>
